@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:friend_lens/constants.dart';
 
-class NoImageDefaultBox extends StatelessWidget {
-  const NoImageDefaultBox({super.key});
+class GalleryImage extends StatelessWidget {
+  const GalleryImage({super.key});
 
   @override
   Widget build(BuildContext context) {
