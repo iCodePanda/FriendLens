@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:friend_lens/utils/galleryTiles.dart';
 import 'constants.dart';
 import './utils/headerText.dart';
 import './utils/noImage.dart';
+import './utils/contact.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -19,13 +21,14 @@ class _HomepageState extends State<Homepage> {
               style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold)),
           backgroundColor: CYAN,
         ),
-        body: Column(children: <Widget>[
-          Container(
-            margin: const EdgeInsets.only(top: 25.0, left: 16.0),
-            height: 50,
-            child: const HeaderText(text: "Recent Gallery"),
-          ),
-          NoImageDefaultBox()
-        ]));
+        body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              HeaderText(text: "Recent Gallery"),
+              Align(alignment: Alignment.center, child: GalleryTiles()),
+              HeaderText(text: "Recent Contacts"),
+              Contact()
+            ]));
   }
 }

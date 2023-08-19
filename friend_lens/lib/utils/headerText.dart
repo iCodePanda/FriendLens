@@ -6,8 +6,14 @@ class HeaderText extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return Text(text,
-        style: const TextStyle(
-            fontFamily: "SFBold", fontSize: 18.0, fontWeight: FontWeight.bold));
+    return Container(
+      margin: const EdgeInsets.only(top: 25.0, left: 16.0),
+      height: 40,
+      child: Text(text,
+          style: const TextStyle(
+              fontFamily: "SFBold",
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold)),
+    );
   }
 }
