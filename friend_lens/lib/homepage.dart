@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:friend_lens/utils/contactsCard.dart';
 import 'package:friend_lens/utils/galleryTiles.dart';
 import 'constants.dart';
 import './utils/headerText.dart';
-import './utils/noImage.dart';
+import 'utils/galleryImage.dart';
 import './utils/contact.dart';
 
 class Homepage extends StatefulWidget {
@@ -28,7 +29,7 @@ class _HomepageState extends State<Homepage> {
               HeaderText(text: "Recent Gallery"),
               Align(alignment: Alignment.center, child: GalleryTiles()),
               HeaderText(text: "Recent Contacts"),
-              Contact()
+              ContactsCard()
             ]));
   }
 }

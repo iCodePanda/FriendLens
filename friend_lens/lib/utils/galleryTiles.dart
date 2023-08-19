@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'noImage.dart';
+import 'galleryImage.dart';
 
 class GalleryTiles extends StatelessWidget {
   const GalleryTiles({super.key});
@@ -13,16 +13,16 @@ class GalleryTiles extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Row(children: <Widget>[
-          NoImageDefaultBox(),
-          NoImageDefaultBox(),
-          NoImageDefaultBox(),
-          NoImageDefaultBox()
+          GalleryImage(),
+          GalleryImage(),
+          GalleryImage(),
+          GalleryImage()
         ]),
         Row(children: <Widget>[
-          NoImageDefaultBox(),
-          NoImageDefaultBox(),
-          NoImageDefaultBox(),
-          NoImageDefaultBox()
+          GalleryImage(),
+          GalleryImage(),
+          GalleryImage(),
+          GalleryImage()
         ])
       ],
     );
