@@ -11,7 +11,7 @@ class Contact extends StatelessWidget {
   Widget build(BuildContext context) {
     if (name == "unknown") {
       return Container(
-          margin: const EdgeInsets.all(3),
+          margin: const EdgeInsets.only(top: 2, bottom: 2, left: 3, right: 3),
           child: Column(children: <Widget>[
             Icon(Icons.account_circle, size: 80.0, color: GRAY),
             Text(name)

@@ -10,15 +10,14 @@ class GalleryTiles extends StatelessWidget {
   Widget build(BuildContext context) {
     //realign this later
     return const Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Row(children: <Widget>[
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           GalleryImage(),
           GalleryImage(),
           GalleryImage(),
           GalleryImage()
         ]),
-        Row(children: <Widget>[
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
           GalleryImage(),
           GalleryImage(),
           GalleryImage(),

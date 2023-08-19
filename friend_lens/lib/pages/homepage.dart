@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:friend_lens/utils/contactsCard.dart';
-import 'package:friend_lens/utils/galleryTiles.dart';
-import 'package:friend_lens/utils/receiveButton.dart';
-import 'constants.dart';
-import './utils/headerText.dart';
-import 'utils/galleryImage.dart';
-import './utils/contact.dart';
-import 'utils/sendButton.dart';
+import 'package:friend_lens/homeutils/contactsCard.dart';
+import 'package:friend_lens/homeutils/galleryTiles.dart';
+import 'package:friend_lens/homeutils/receiveButton.dart';
+import '../constants.dart';
+import '../homeutils/headerText.dart';
+import '../homeutils/galleryImage.dart';
+import '../homeutils/contact.dart';
+import '../homeutils/sendButton.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -37,11 +37,12 @@ class _HomepageState extends State<Homepage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               HeaderText(text: "Recent Gallery"),
-              Align(alignment: Alignment.center, child: GalleryTiles()),
+              GalleryTiles(),
               HeaderText(text: "Recent Contacts"),
               ContactsCard(),
-              SendButton(onPressed: _onSend, title: "Send"),
-              ReceiveButton(onPressed: _onReceive, title: "Receive")
+              Center(child: SendButton(onPressed: _onSend, title: "Send")),
+              Center(
+                  child: ReceiveButton(onPressed: _onReceive, title: "Receive"))
             ]));
   }
 }

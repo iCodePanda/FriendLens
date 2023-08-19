@@ -9,8 +9,12 @@ class ContactsCard extends StatelessWidget {
     return const Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Row(children: <Widget>[Contact(), Contact(), Contact(), Contact()]),
-        Row(children: <Widget>[Contact(), Contact(), Contact(), Contact()])
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[Contact(), Contact(), Contact(), Contact()]),
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[Contact(), Contact(), Contact(), Contact()])
       ],
     );
   }
