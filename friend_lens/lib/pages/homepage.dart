@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
   }
 
   void _onReceive() {
-    print("receive");
+    print("Going to inbox");
   }
 
   @override
@@ -46,7 +46,7 @@ class _HomepageState extends State<Homepage> {
                   child:
                       SendButton(onPressed: _toCalendarScreen, title: "Send")),
               Center(
-                  child: ReceiveButton(onPressed: _onReceive, title: "Receive"))
+                  child: ReceiveButton(onPressed: _onReceive, title: "Inbox"))
             ]));
   }
 }

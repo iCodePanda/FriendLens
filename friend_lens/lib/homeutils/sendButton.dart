@@ -11,7 +11,7 @@ class SendButton extends StatelessWidget {
     return Container(
         margin: const EdgeInsets.only(top: 15.0),
         child: ElevatedButton(
-            onPressed: onPressed,
+            onPressed: this.onPressed,
             child: Text(title,
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             style: ElevatedButton.styleFrom(

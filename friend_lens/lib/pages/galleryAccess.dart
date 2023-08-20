@@ -47,14 +47,6 @@ class _GalleryAccessState extends State<GalleryAccess> {
                       ? const Center(child: Text('Sorry nothing selected!!'))
                       : Center(child: Image.file(galleryFile!)),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 18.0),
-                  child: Text(
-                    "GFG",
-                    textScaleFactor: 3,
-                    style: TextStyle(color: Colors.green),
-                  ),
-                )
               ],
             ),
           );
