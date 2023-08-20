@@ -6,7 +6,7 @@ FriendLens does the following:
 - uses facial detection to identify people in photos and automatically share them with the right contacts - detects any motion blur and overexposure, removing any pics that contain such
 - allow you to select a time period of photos you want to send (for example yesterday night's party or last week's New York trip)
 
-Some other cool features
+Some other cool features:
 - the app integrates with all the social media platforms, and it converts some goofy photos into stickers to use in social media
 - the app’s AI selects the best photo of the night and saves it as a core memory
 - Event albums, celebration reminders, photo enhancement, themed albums(parties, vacations, etc.), and many more.
