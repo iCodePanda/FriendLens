@@ -3,13 +3,16 @@ import 'package:friend_lens/constants.dart';
 
 class Contact extends StatelessWidget {
   const Contact(
-      {super.key, this.name = "unknown"}); //check if this conditional works
+      {super.key,
+      this.name = "unknown",
+      this.pathToPhoto}); //check if this conditional works
 
   final String name;
+  final String? pathToPhoto;
 
   @override
   Widget build(BuildContext context) {
-    if (name == "unknown") {
+    if (pathToPhoto == null) {
       return Container(
           margin: const EdgeInsets.only(top: 2, bottom: 2, left: 3, right: 3),
           child: Column(children: <Widget>[
@@ -17,8 +20,19 @@ class Contact extends StatelessWidget {
             Text(name)
           ]));
     } else {
-      return const Placeholder();
-      //If there is a person, provided that the api works
+      return Container(
+          margin: const EdgeInsets.only(top: 2, bottom: 2, left: 3, right: 3),
+          child: Column(children: <Widget>[
+            Container(
+              height: 80.0,
+              width: 80.0,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage(pathToPhoto!), fit: BoxFit.cover)),
+            ),
+            Text(name)
+          ]));
     }
   }
 }
