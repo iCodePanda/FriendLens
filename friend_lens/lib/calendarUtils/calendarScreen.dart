@@ -1,57 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:friend_lens/homeutils/sendButton.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:friend_lens/constants.dart';
 
-class TableBasicsExample extends StatefulWidget {
+import '../pages/sent.dart';
+
+final kToday = DateTime.now();
+final kFirstDay = DateTime(kToday.year, kToday.month - 12, kToday.day);
+final kLastDay = DateTime.now();
+
+class CalendarScreen extends StatefulWidget {
+  const CalendarScreen({super.key});
   @override
-  _TableBasicsExampleState createState() => _TableBasicsExampleState();
+  State<CalendarScreen> createState() => _CalendarScreenState();
 }
 
-class _TableBasicsExampleState extends State<TableBasicsExample> {
-  CalendarFormat _calendarFormat = CalendarFormat.month;
-  DateTime _focusedDay = DateTime.now();
-  DateTime? _selectedDay;
+class _CalendarScreenState extends State<CalendarScreen> {
+  CalendarFormat _calendarFormat = CalendarFormat.month; //month, twoWeeks, week
+  DateTime _focusedDay = DateTime.now(); //current time
+  DateTime? _selectedDayStart;
+  DateTime? _selectedDayEnd;
+  var startDay = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('TableCalendar - Basics'),
-      ),
-      body: TableCalendar(
-        firstDay: kFirstDay,
-        lastDay: kLastDay,
-        focusedDay: _focusedDay,
-        calendarFormat: _calendarFormat,
-        selectedDayPredicate: (day) {
-          // Use `selectedDayPredicate` to determine which day is currently selected.
-          // If this returns true, then `day` will be marked as selected.
-
-          // Using `isSameDay` is recommended to disregard
-          // the time-part of compared DateTime objects.
-          return isSameDay(_selectedDay, day);
-        },
-        onDaySelected: (selectedDay, focusedDay) {
-          if (!isSameDay(_selectedDay, selectedDay)) {
-            // Call `setState()` when updating the selected day
-            setState(() {
-              _selectedDay = selectedDay;
-              _focusedDay = focusedDay;
-            });
-          }
-        },
-        onFormatChanged: (format) {
-          if (_calendarFormat != format) {
-            // Call `setState()` when updating calendar format
-            setState(() {
-              _calendarFormat = format;
-            });
-          }
-        },
-        onPageChanged: (focusedDay) {
-          // No need to call `setState()` here
-          _focusedDay = focusedDay;
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("Select a timeframe",
+              style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold)),
+          backgroundColor: CYAN,
+        ),
+        body: Column(
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.only(top: 30),
+              child: TableCalendar(
+                //this is the calendar
+                firstDay: kFirstDay,
+                lastDay: kLastDay,
+                focusedDay: _focusedDay,
+                calendarFormat: _calendarFormat,
+                selectedDayPredicate: (day) {
+                  return isSameDay(_selectedDayStart, day) ||
+                      isSameDay(_selectedDayEnd, day);
+                },
+                onDaySelected: (selectedDay, focusedDay) {
+                  if (startDay) {
+                    if (!isSameDay(_selectedDayStart, selectedDay)) {
+                      setState(() {
+                        _selectedDayStart = selectedDay;
+                        _focusedDay = focusedDay;
+                        startDay = !startDay;
+                      });
+                    }
+                  } else {
+                    if (!isSameDay(_selectedDayEnd, selectedDay)) {
+                      setState(() {
+                        _selectedDayEnd = selectedDay;
+                        _focusedDay = focusedDay;
+                        startDay = !startDay;
+                      });
+                    }
+                  }
+                },
+                onFormatChanged: (format) {
+                  if (_calendarFormat != format) {
+                    setState(() {
+                      _calendarFormat = format;
+                    });
+                  }
+                },
+                onPageChanged: (focusedDay) {
+                  _focusedDay = focusedDay;
+                },
+              ),
+            ),
+            Container(
+                child: (_selectedDayStart == null) && (_selectedDayEnd == null)
+                    ? const Center(
+                        child: Text('Please select a start and end date'))
+                    : _selectedDayStart == null
+                        ? const Center(
+                            child: Text("Please select a start date."))
+                        : _selectedDayEnd == null
+                            ? const Center(
+                                child: Text("Please select an end date."))
+                            : (_selectedDayEnd!.isBefore(_selectedDayStart!))
+                                ? const Center(
+                                    child: Text(
+                                        "End date is before start, please try again."))
+                                : SendButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const Sent()));
+                                    },
+                                    title: 'Send',
+                                  ))
+          ],
+        ));
   }
 }

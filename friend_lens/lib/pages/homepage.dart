@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:friend_lens/calendarUtils/calendarScreen.dart';
 import 'package:friend_lens/homeutils/contactsCard.dart';
 import 'package:friend_lens/homeutils/galleryTiles.dart';
 import 'package:friend_lens/homeutils/receiveButton.dart';
@@ -16,8 +17,9 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  void _onSend() {
-    print("send");
+  void _toCalendarScreen() {
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const CalendarScreen()));
   }
 
   void _onReceive() {
@@ -40,7 +42,9 @@ class _HomepageState extends State<Homepage> {
               GalleryTiles(),
               HeaderText(text: "Recent Contacts"),
               ContactsCard(),
-              Center(child: SendButton(onPressed: _onSend, title: "Send")),
+              Center(
+                  child:
+                      SendButton(onPressed: _toCalendarScreen, title: "Send")),
               Center(
                   child: ReceiveButton(onPressed: _onReceive, title: "Receive"))
             ]));
