@@ -1,10 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:friend_lens/constants.dart';
+import 'dart:async';
+import 'homepage.dart';
 
-class Sent extends StatelessWidget {
-  const Sent({super.key});
+class SentScreen extends StatefulWidget {
+  const SentScreen({super.key});
 
   @override
+  State<SentScreen> createState() => _SentScreenState();
+}
+
+class _SentScreenState extends State<SentScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _startTimer();
+  }
+
+  void _startTimer() {
+    Timer(Duration(seconds: 2), () {
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (context) => Homepage()));
+    });
+  }
+
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;

@@ -95,7 +95,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const Sent()));
+                                                  const SentScreen()));
                                     },
                                     title: 'Send',
                                   ))
